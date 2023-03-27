@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row py-5">
+            {% if foods %}
+
+            <div class="col-md-8">
+                {% for food in foods %}
+                <div class="card mb-3">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <img src="{{food.photo.url}}" class="rounded-start" alt="..." height="175px" width="100%">
+                      </div>
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{food.name}}</h5>
+                          <p class="card-text">Quantity: {{food.quantity}}</p>
+                          <p class="card-text">Price: {{food.price}}</p>
+
+                          <div class="text-end">
+                            <a href="{% url 'delete_cart_item' food.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h1">Total Price</h1>
+                        <h3 class="h3">Rs {{total_price}}/-</h3>
+                        <a href="{% url 'check_out' %}" class="btn btn-primary">Check Out</a>
+                    </div>
+                </div>
+            </div>
+
+            {% else %}
+            <p class="text-container display-4">Cart is Empty !</p>
+
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock content %}

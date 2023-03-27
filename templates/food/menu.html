@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="py-4" style="text-align: center; color: red;">Menu</h1>
+<br>
+
+<!--we will use the foods dictionary to display the food items-->
+
+<div class="container">
+    <div class="row">
+        {% for food in foods %}
+        <div class="col-md-3"> <!--class="col-lg-2 col-sm-4 col-6" adding multiple break point, for large screen col is 2 and for small screen like phone col is 4 and for others col is 6-->
+            <div class="card my-2">
+                <img src="{{food.photo.url}}" alt="" class="card-img-top" height="250">
+                <div class="card-body">
+                    <h5 class="h5">{{food.name}}</h5>
+                    <p class="card-text">{{food.price}}</p>
+                    <a href="{% url 'details' food.id %}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

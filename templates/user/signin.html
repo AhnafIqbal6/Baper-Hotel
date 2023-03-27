@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %} 
+
+<div class="container">
+    <div class="row my-3">
+        <div class="col-md-4 mx-auto">
+            <div class="card bg-dark text-light">
+                <div class="card-header">
+                    <h3 class="h3">Sign In</h3>
+                </div>
+                <div class="card-body">
+
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p class="{{message.tags}}">{{message}}</p>     <!--tags can be error, warning, success, info, debug (refer to documentation: https://docs.djangoproject.com/en/4.0/ref/contrib/messages/)-->
+                        {% endfor %}
+                    {% endif %}
+
+                    <form action="{% url 'signin' %}" method="post"  novalidate class='needs-validation'>
+                        {% csrf_token %}    <!--if we donot write this a error page will be generated after we click on sign up button-->
+                        
+
+                        <div class="mb-2">
+                            <label for="username">Mobile Number</label>
+                            
+                            <input type="tel" name="username" id="username" class="form-control" required minlength="10">
+                            <div class="valid-feedback">
+                                Looks good!
+                              </div>
+                              <div class="invalid-feedback">
+                                Please provide a valid phone number.
+                              </div>
+                            
+                        </div>
+
+
+                        <div class="mb-2">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control " required minlength="8">
+                            <div class="valid-feedback">
+                                Looks good!
+                              </div>
+                              <div class="invalid-feedback">
+                                Password must be 8 - 16 characters long
+                              </div>
+                        </div>
+
+                        
+
+                        <input type="submit" class="btn btn-primary" value="Sign In">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation');
+
+  for(let f of forms){
+    f.classList.add('was-validated')
+  }
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+
+
+</script>
+{% endblock content %}
+
+
+<!-- for javascript validation file -->
+{% block extrajs %}
+<script src="{% static 'js/signin-validator.js' %}"></script>
+{% endblock extrajs %}

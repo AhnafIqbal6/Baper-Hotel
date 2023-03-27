@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row my-5">
+        <div class="col-md-6 mx-auto">
+
+            <!--orders object is received from orders() function in views.py of food app-->
+            {% for order in orders %}
+                <div class="card my-2">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h4 class="h4">ID : {{order.id}}</h4>
+                        <p class="text-lead">Status: 
+                            {% if order.is_ready and order.is_delivered %}
+                                Delivered
+                            {% elif order.is_ready %}
+                                Ready
+                            {% else %}
+                                Processing
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-lead">{{order.order_details}}</p>
+                        <p>{{order.total_price}}</p>
+                        <p class="text-muted">{{order.created_at}}</p>
+                    </div>
+                </div>
+            {% endfor %}  
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Lora:ital,wght@1,500&family=PT+Serif&display=swap'); /* for Silicon Cafe*/
+
+h1{
+    font-family: 'PT Serif', serif;
+    font-size: 100px;
+    color: red;
+}
+
+#tagline{
+    font-size: 35px;
+}

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row my-5">
+    <div class="col-md-4 mx-auto">
+        <div class="card">
+            <div class="card-body">
+                {% if messages %}
+                        {% for message in messages %}
+                            <p class="{{message.tags}}">{{message}}</p>     <!--tags can be error, warning, success, info, debug (refer to documentation: https://docs.djangoproject.com/en/4.0/ref/contrib/messages/)-->
+                        {% endfor %}
+                {% endif %}
+
+                    <form action="{% url 'place_order' %}" method="post"  novalidate class='needs-validation'>
+                        {% csrf_token %}    <!--if we donot write this a error page will be generated after we click on sign up button-->
+
+                        <div class="mb-2">
+                            <label for="otp">Please check your registered mail id for OTP</label>
+                            <input type="text" name="otp" id="otp" class="form-control" placeholder="OTP" required minlength="6" maxlength="6"> 
+                            <div class="valid-feedback">
+                                Looks good!
+                              </div>
+                              <div class="invalid-feedback">
+                                Please provide a valid OTP.
+                              </div>
+                            <!--required means, without giving input form will not be submitted-->
+                        </div>
+
+                        <input type="submit" class="btn btn-primary" value="Verify">
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation');
+
+  for(let f of forms){
+    f.classList.add('was-validated')
+  }
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+
+
+
+</script>
+{% endblock content %}
+

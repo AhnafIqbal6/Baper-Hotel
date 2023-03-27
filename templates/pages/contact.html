@@ -1,0 +1,100 @@
+{% extends 'base.html' %}   <!--for the common navbar and footer, we inherit (extend) the base.html-->
+
+{% load static %}           <!--for the js which is present under static folder-->
+
+{% block content %}
+<div class="row py-3 px-5">
+    <!-- for google maps -->
+    <div class="col-md-6">
+        <iframe width="600" height="450" id="gmap_canvas" src="https://maps.google.com/maps?q=panthapath&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    </div>
+
+    <!-- for address -->
+    <div class="col-md-6">
+        <p class="display-3">Address</p>
+        <div class="card">
+            <div class="card-body">
+                <div class="address" style="font-size: 25px;">
+                    <p>Baper Hotel Inc.</p>
+                    <p>Panthapath, Dhaka</p>
+                    <p>+8801539627854</p>
+                    <p>baperhotel@gmail.com</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row py-3">
+    <!-- for form -->
+    <div class="col-md-6">
+        <form action="" onsubmit="return validate();">
+            <div class="col-md-6 mx-auto border rounded py-2 px-3" style="background-color: rgba(0, 0, 0, 0.2)">
+                <!--for name-->
+                <div class="my-1">
+                    <label for="name">Name<span class="text-danger">*</span></label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="enter your name">
+                    <label for="name error" id="name_error" class="text-danger"></label>    <!--this label later can be used to display error msg-->
+                </div>
+                <!--for phone number-->
+                <div class="my-1">
+                    <label for="mobile">Mobile<span class="text-danger">*</span></label>
+                    <input type="text" name="mobile" id="mobile" class="form-control" placeholder="enter your number">
+                    <label for="mobile error" id="mobile_error" class="text-danger"></label>    <!--this label later can be used to display error msg-->
+                </div>
+                <!--for email-->
+                <div class="my-1">
+                    <label for="email">Email<span class="text-danger">*</span></label>
+                    <input type="text" name="email" id="email" class="form-control" placeholder="enter your email">
+                    <label for="email error" id="email_error" class="text-danger"></label>    <!--this label later can be used to display error msg-->
+                </div>
+                <!--for suggestion-->
+                <div class="my-1">
+                    <label for="name">Suggestions</label>
+                    <textarea type="text" class="form-control" placeholder="any suggestions ?"></textarea> 
+                </div>
+        
+                
+        
+                <input type="submit" value="Send" class="btn btn-primary w-100 my-3"><br><br>
+                <!--
+                <div class="text-center">
+                    Contact with on <br>
+                    <strong>
+                        <i class="bi bi-instagram"></i> <a href="https://www.instagram.com/tanmaya41/" style="text-decoration: none;" target="_blank">Instagram</a>&nbsp;
+                        <i class="bi bi-facebook"></i> <a href="#" style="text-decoration: none;">Facebook</a>&nbsp;
+                        <i class="bi bi-twitter"></i> <a href="https://twitter.com/Tanmaya86137008" style="text-decoration: none;" target="_blank">Twitter</a>
+                    </strong>
+                </div>
+                -->
+                
+            </div>
+        </form>
+    </div>
+
+    <!-- for social media links -->
+    <div class="col-md-6">
+        <p class="display-3">Social Media</p>
+        <div class="row" style="font-size: 20px; text-decoration: none;">
+            <ul>
+                <li>
+                    <a href="https://www.instagram.com/" style="text-decoration: none;">Instagram</a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/" style="text-decoration: none;">Facebook</a>
+                </li>
+                <li>
+                    <a href="https://twitter.com/" style="text-decoration: none;">Twitter</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block extrajs %}
+    <script src="{% static 'js/form-validator.js' %}"></script>
+{% endblock extrajs %}

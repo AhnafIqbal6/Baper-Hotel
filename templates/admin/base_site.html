@@ -1,0 +1,7 @@
+<!--html page to customize Admin page-->
+
+{% extends 'admin/base.html' %}     <!--this base.html is the template proovided by django under admin folder-->
+
+{% block branding %}                <!--branding content is inbuilt, we have not created it, open localhost:8000/admin anmd inspect it for the id and classes-->
+    <h1 id="site-name">Baper Hotel er Admin</h1>
+{% endblock branding %}

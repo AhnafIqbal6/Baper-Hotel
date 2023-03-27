@@ -1,0 +1,176 @@
+{% load static %}   <!--we are using bootstrap and js which is present inside static folder, that why we need to load static-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baper Hotel</title>
+
+    <link rel="stylesheet" href="{% static 'bs/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+
+    {% block css %}
+
+    {% endblock css %}
+    <style>
+      .hideel{
+        display: None;
+      }
+      .relative{
+        position: relative;
+      }
+      .suggestion{
+        position: absolute;
+        top: 103%;
+        left: -5px;
+        right: 0px;
+        width: 100%;
+        height: max-content;
+        transition: all 0.15s;
+        z-index: 100000;
+      }
+      .suggestion>a{
+
+        margin: 0.2em 0.3em;
+        padding: 0.2rem;
+        border-radius: 4px;
+        width: 100%;
+        display: block;
+        background-color: aliceblue;
+      }
+    </style>
+</head>
+<body>
+    <!--
+    <nav>
+        <a href = "{% url 'home'%}">Home</a>
+        <a href = "{% url 'about_us'%}">About</a>
+        <a href = "{% url 'contact'%}">Contact Us</a>
+    </nav>
+    -->
+    <!--navbar-->
+    <nav class="navbar navbar-expand-md">
+
+        <div class="container-fluid">
+          <!--<a class="navbar-brand" href="{% url 'home'%}">Baper Hotel</a>-->
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <form action="{% url 'search' %}" method="post">    <!--when we click the search btn, 'search' is searched in urls.py of food app for the name='search', when it matches to a corresponding path(), control flows from urls to views to a function-->
+                  {% csrf_token %}
+                  <div class="form-outline d-flex relative">
+                    <input type="text" id="form1" class="form-control searchinput" name="form1" placeholder="Search food..."  required />   <!--name=form1, is used to fetch the value of the field in views.py of food app-->
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-search"> search</i>
+                    </button>
+                    <div class="suggestion">
+
+                  </div>
+
+                  </div>
+                </form>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'home'%}">Home</a>  <!--when it is clicked, control flow to urls.py of pages app -->
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'about_us'%}">About</a>   <!--presnt in urls.py of pages app-->
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'contact'%}">Contact Us</a>   <!--presnt in urls.py of pages app-->
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'menu'%}">Menu</a>  <!--control flows to urls.py of food app-->
+              </li>
+
+              
+
+
+              <!--once user has successfully logged in, Sign In, Sign Up will not be visible for her in navbar, rather Cart and  welcome first_name will be visible -->
+
+              {% if user.is_authenticated %}
+              <li class="nav-item dropdown">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'cart' %}">Cart</a>
+                </li>
+
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Welcome, {{user.first_name}}
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{% url 'orders' %}">Orders</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'signout' %}">Log Out</a></li>
+                </ul>
+              </li>
+
+              <!--when no user has authenticated or logged in, sign up and sign in will be visible in navbar -->
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'signup'%}">Sign Up</a>   <!--in urls.py of uers app-->
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'signin'%}">Sign In</a>   <!--in urls.py of uers app-->
+                </li>
+              {% endif %}
+
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <footer class="bg-dark text-light p-3 text-center" style="position: fixed; width: 100%; bottom:0;">
+        &copy; 2022 | All Rights Reserved | Baper Hotel
+    </footer>
+
+    {% block extrajs %}
+
+    {% endblock extrajs %}
+
+    <script src="{% static 'bs/bootstrap.bundle.js'%}"></script>    <!--we load this js file bcoz we have used bs/bootstrap.min.css-->
+    
+</body>
+<script defer>
+  const searchBtn = document.getElementsByClassName('searchinput')[0];
+  const suggestionDiv= document.getElementsByClassName('suggestion')[0];
+  searchBtn.addEventListener('focus',()=>{
+    suggestionDiv.classList.remove('hideel');
+  })
+  searchBtn.addEventListener("focusout", () =>{
+    function remove(){
+      suggestionDiv.classList.add('hideel');
+    }
+    setTimeout(remove, 300);
+  });
+
+  searchBtn.addEventListener('input',async()=>{
+    suggestionDiv.innerHTML = ''
+    let value = searchBtn.value;
+    let url = `/suggestions/${value}`
+    const response = await fetch(url);
+        const json = await response.json();
+        for(let item of json){
+          console.log(json)
+          let a = document.createElement('a');
+          a.href = `/food/details/${item.id}/`
+          a.innerText = item.name;
+          suggestionDiv.appendChild(a);
+        }
+  })
+</script>
+</html>

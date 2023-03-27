@@ -1,0 +1,27 @@
+<!-- to print the food details when it is searched in the search bar, foodname object and messages is received from search() function in views.py of food app -->
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if messages %}
+        {% for message in messages %}
+            <p class="display-2 {{message.tags}}">{{message}}</p>     <!--tags can be error, warning, success, info, debug (refer to documentation: https://docs.djangoproject.com/en/4.0/ref/contrib/messages/)-->
+        {% endfor %}
+
+    {% else %}
+    <div class="col-md-3 mx-auto my-4">
+        <div class="card my-2 w-100">
+            <img src="{{foodname.photo.url}}" alt="" class="card-img-top" height="300">     <!--this foodname is received from search() function in views.py of food app-->
+            <div class="card-body">
+                <h5 class="h5">{{foodname.name}}</h5>
+                <p class="card-text">{{foodname.price}}</p>
+                <a href="{% url 'details' foodname.id %}" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    </div>       
+
+    {% endif %}
+
+{% endblock content %}

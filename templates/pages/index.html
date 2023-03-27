@@ -1,0 +1,98 @@
+{% extends 'base.html' %}   <!--to use the common navbar and footer-->
+{% load static %}           <!--load this static folder only when images js or css files are required-->
+
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/index-style.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Baper Hotel</h1>
+                <p class="text-lead" id="tagline">"We cook up something special!"</p>
+            </div>
+            <div class="col-md-6">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        
+                        <div class="carousel-item active">
+                            <img src="{% static 'images/food1.jpg'%}" class="d-block w-100" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/food2.jpg'%}" class="d-block w-100" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/food6.jpg'%}" class="d-block w-100" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'images/food3.jpg'%}" class="d-block w-100" alt="">
+                        </div>
+
+                    </div>
+
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                    </button>
+
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+
+    <div class="row py-5 px-3 mx-5">
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'images/indian2.jpg'%}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Indian</h5>
+                  <p class="card-text">Authentic dishes made with Indian spices gives you an aroma of indigeneous food.</p>
+                  <a href="{% url 'menu' %}" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'images/noodles.jpg'%}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Chinese</h5>
+                  <p class="card-text">Chinese food, rich and colorful, has diversified color, aromatic flavor, and good taste as its main features.</p>
+                  <a href="{% url 'menu' %}" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'images/dosa.jpg'%}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">South Indian</h5>
+                  <p class="card-text">Mouth watering dishes made with South Indian flavors and spices. Dosa is the most ordered item.</p>
+                  <a href="{% url 'menu' %}" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{% static 'images/drinks.jpg'%}" alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title">Drinks</h5>
+                  <p class="card-text">Wide variety of healthy and refreshing beverages available of your choice to try upon.</p>
+                  <a href="{% url 'menu' %}" class="btn btn-primary">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+{% endblock content %}
