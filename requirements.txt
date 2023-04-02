@@ -9,3 +9,4 @@ gunicorn
 tk
 tk-tools
 Pillow
+whitenoise
