@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn cafe.wsgi
+web: python3 manage.py migrate && gunicorn cafe.wsgi
