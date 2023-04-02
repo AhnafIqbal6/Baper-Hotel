@@ -1,1 +1,1 @@
-web: gunicorn cafe.wsgi --log-file -
+web: python3 manage.py migrate && gunicorn cafe.wsgi
