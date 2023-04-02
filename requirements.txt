@@ -7,4 +7,3 @@ sqlparse
 toml
 gunicorn
 tk
-tkinter
