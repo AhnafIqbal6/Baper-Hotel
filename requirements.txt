@@ -8,3 +8,4 @@ toml
 gunicorn
 tk
 tk-tools
+Pillow
