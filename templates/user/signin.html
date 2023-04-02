@@ -26,7 +26,7 @@
                         <div class="mb-2">
                             <label for="username">Mobile Number</label>
                             
-                            <input type="tel" name="username" id="username" class="form-control" required minlength="10">
+                            <input type="tel" name="username" id="username" class="form-control" required minlength="11" required maxlength="11">
                             <div class="valid-feedback">
                                 Looks good!
                               </div>
@@ -38,15 +38,15 @@
 
 
                         <div class="mb-2">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" class="form-control " required minlength="8">
-                            <div class="valid-feedback">
-                                Looks good!
-                              </div>
-                              <div class="invalid-feedback">
-                                Password must be 8 - 16 characters long
-                              </div>
-                        </div>
+                          <label for="password">Password</label>
+                          <input type="password" name="password" id="password" class="form-control" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z]).{8,16}" required>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                              Minimum eight length, maximum sixteen length, one special character, and one number.
+                          </div>
+                      </div>
 
                         
 
