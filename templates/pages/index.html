@@ -1,6 +1,9 @@
 {% extends 'base.html' %}   <!--to use the common navbar and footer-->
 {% load static %}           <!--load this static folder only when images js or css files are required-->
 
+{% block head %}
+<link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+{% endblock head %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/index-style.css' %}">
