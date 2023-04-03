@@ -46,15 +46,18 @@
                         </div>
 
                         <div class="mb-2">
-                            <label for="username">Mobile Number</label>
-                            <input type="tel" name="username" id="username" class="form-control" minlength="11" maxlength="11" required>
-                            <div class="valid-feedback">
-                                Looks good!
-                              </div>
-                              <div class="invalid-feedback">
-                                Please enter a valid Phone number.
-                              </div>
+                          <label for="username">Mobile Number</label>
+                          
+                          <input type="tel" name="username" id="username" class="form-control" minlength="11" maxlength="11" pattern="[0-9]{11}" required>
+                          <div class="valid-feedback">
+                              Looks good!
+                          </div>
+                          <div class="invalid-feedback">
+                              Please enter a valid Phone number.
+                          </div>
+                          
                         </div>
+                      
 
                         <div class="mb-2">
                             <label for="email">Email</label>
