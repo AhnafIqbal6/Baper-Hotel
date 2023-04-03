@@ -73,27 +73,39 @@
                 </div>
                 
 
-                        <div class="mb-2">
-                          <label for="password">Password</label>
-                          <input type="password" name="password" id="password" class="form-control" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z]).{8,16}" required>
-                          <div class="valid-feedback">
-                              Looks good!
-                          </div>
-                          <div class="invalid-feedback">
-                              Minimum eight length, maximum sixteen length, one special character, and one number.
-                          </div>
-                      </div>
+                <div class="mb-2">
+                  <label for="password">Password</label>
+                  <div class="input-group">
+                      <input type="password" name="password" id="password" class="form-control" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z]).{8,16}" required>
+                      <button class="btn btn-outline-secondary" type="button" id="toggle-password">
+                          <i class="bi bi-eye-slash"></i>
+                      </button>
+                  </div>
+                  <div class="valid-feedback">
+                      Looks good!
+                  </div>
+                  <div class="invalid-feedback">
+                      Minimum eight length, maximum sixteen length, one special character, and one number.
+                  </div>
+              </div>
+              
                        
-                      <div class="mb-2">
-                          <label for="password2">Confirm Password</label>
-                          <input type="password" name="password2" id="password2" class="form-control" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z]).{8,16}" required>
-                          <div class="valid-feedback">
-                              Looks good!
-                          </div>
-                          <div class="invalid-feedback">
-                              Minimum eight length, maximum sixteen length, one special character, and one number.
-                          </div>
-                      </div>
+              <div class="mb-2">
+                <label for="password2">Confirm Password</label>
+                <div class="input-group">
+                    <input type="password" name="password2" id="password2" class="form-control" pattern="(?=.*\d)(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z]).{8,16}" required>
+                    <button class="btn btn-outline-secondary" type="button" id="toggle-password2">
+                        <i class="bi bi-eye-slash"></i>
+                    </button>
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Minimum eight length, maximum sixteen length, one special character, and one number.
+                </div>
+            </div>
+            
 
                         <input type="submit" class="btn btn-primary" value="Sign Up">
                     </form>
