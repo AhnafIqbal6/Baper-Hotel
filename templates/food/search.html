@@ -16,7 +16,7 @@
             <img src="{{foodname.photo.url}}" alt="" class="card-img-top" height="300">     <!--this foodname is received from search() function in views.py of food app-->
             <div class="card-body">
                 <h5 class="h5">{{foodname.name}}</h5>
-                <p class="card-text">{{foodname.price}}</p>
+                <p class="card-text">{{foodname.price}} &#2547;</p>
                 <a href="{% url 'details' foodname.id %}" class="btn btn-primary">Details</a>
             </div>
         </div>

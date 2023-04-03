@@ -3,6 +3,7 @@ from django.contrib.auth.models import User      # for Order class
 
 # Create your models here.
 
+
 class Cuisine(models.Model):
     category = models.CharField(max_length = 100)   # CharField means varchar
     # category is the column name

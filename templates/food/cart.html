@@ -2,6 +2,7 @@
 
 {% block content %}
 
+
     <div class="container">
         <div class="row py-5">
             {% if foods %}
@@ -17,7 +18,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{food.name}}</h5>
                           <p class="card-text">Quantity: {{food.quantity}}</p>
-                          <p class="card-text">Price: {{food.price}}</p>
+                          <p class="card-text">Price: {{food.price}} &#2547;</p>
 
                           <div class="text-end">
                             <a href="{% url 'delete_cart_item' food.id %}" class="btn btn-sm btn-outline-danger">Delete</a>
@@ -33,17 +34,21 @@
                 <div class="card">
                     <div class="card-body">
                         <h1 class="h1">Total Price</h1>
-                        <h3 class="h3">Rs {{total_price}}/-</h3>
+                        <h3 class="h3">Tk {{total_price}}/-</h3>
                         <a href="{% url 'check_out' %}" class="btn btn-primary">Check Out</a>
                     </div>
                 </div>
             </div>
 
             {% else %}
-            <p class="text-container display-4">Cart is Empty !</p>
+            <p class="text-container display-4">Cart is Empty!</p>
 
             {% endif %}
         </div>
     </div>
+
+    
+    
+    
 
 {% endblock content %}

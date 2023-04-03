@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views             # to access the all the functions which is in views.py, we import the views file from root '.' dir
+from . import views           # to access the all the functions which is in views.py, we import the views file from root '.' dir
 
 urlpatterns = [
     path('menu/', views.menu, name="menu"),                     # for base.html <a href="{% url 'menu'%}"
